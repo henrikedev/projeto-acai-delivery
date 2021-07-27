@@ -87,6 +87,7 @@ h1 {
 .pizza-item--img img {
     width:100%;
     height:auto;
+    margin-top: 30px;
 }
 .pizza-item--add {
     width:50px;
