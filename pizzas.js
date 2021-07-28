@@ -1,4 +1,4 @@
-let pizzaJson = [
+let acaiJson = [
     {id:1, name:'Acaí Puro', img:'images/acai.png', price:14.99, sizes:['100mL', '300mL', '500mL'], description:'Açaí puro sem nenhum adicional'},
     {id:2, name:'Açaí Banana e Granola', img:'images/acai1.png', price:15.99, sizes:['100mL', '300mL', '500mL'], description:'Açaí contendo fatias de banana e granola'},
     {id:3, name:'Açaí Banana, Kiwi e Morango ', img:'images/acai2.png', price:16.99, sizes:['100mL', '300mL', '500mL'], description:'Açaí contendo Banana, Kiwi e Morango'},
