@@ -61,35 +61,35 @@ main {
 h1 {
     font-family:'Hepta Slab', Helvetica, Arial;
 }
-.pizza-area {
+.acai-area {
     display:grid;
     grid-template-columns: repeat(3, 1fr);
 }
-.pizza-item {
+.acai-item {
     text-align: center;
     max-width:250px;
     font-family:'Hepta Slab', Helvetica, Arial;
     margin:0 auto 50px auto;
 }
-.pizza-item a {
+.acai-item a {
     display:flex;
     flex-direction: column;
     align-items:center;
     text-decoration: none;
 }
-.pizza-item--img {
+.acai-item--img {
     width:200px;
     height:200px;
     background-color:#EEE;
     border-radius:100px;
     box-shadow:0px 10px 50px rgba(0, 0, 0, 0.2);
 }
-.pizza-item--img img {
+.acai-item--img img {
     width:100%;
     height:auto;
     margin-top: 30px;
 }
-.pizza-item--add {
+.acai-item--add {
     width:50px;
     height:50px;
     line-height:50px;
@@ -102,27 +102,27 @@ h1 {
     margin-top:-25px;
     transition:all ease .2s;
 }
-.pizza-item a:hover .pizza-item--add {
+.acai-item a:hover .acai-item--add {
     background-color:#244c88;
 }
-.pizza-item--price {
+.acai-item--price {
     font-size:15px;
     color:#333;
     margin-top:5px;
 }
-.pizza-item--name {
+.acai-item--name {
     font-size:20px;
     font-weight: bold;
     color:#000;
     margin-top:5px;
 }
-.pizza-item--desc {
+.acai-item--desc {
     font-size:13px;
     color:#555;
     margin-top:10px;
 }
 
-.pizzaWindowArea {
+.acaiWindowArea {
     position:fixed;
     left:0;
     top:0;
@@ -135,7 +135,7 @@ h1 {
     align-items: center;
     overflow-y:auto;
 }
-.pizzaWindowBody {
+.acaiWindowBody {
     width:900px;
     background-color:#FFF;
     border-radius:10px;
@@ -143,49 +143,49 @@ h1 {
     display:flex;
     margin:20px 0px;
 }
-.pizzaBig {
+.acaiBig {
     flex:1;
     display:flex;
     justify-content: center;
     align-items: center;
 }
-.pizzaBig--back {
+.acaiBig--back {
     position:absolute;
     width:30px;
     height:30px;
     background-color:#000;
 }
-.pizzaBig img {
+.acaiBig img {
     height:400px;
     width:auto;
 }
-.pizzaInfo {
+.acaiInfo {
     flex:1;
     font-family:'Hepta Slab', Helvetica, Arial;
     padding-bottom:50px;
 }
-.pizzaInfo h1 {
+.acaiInfo h1 {
     margin-top:50px;
 }
-.pizzaInfo .pizzaInfo--desc {
+.acaiInfo .acaiInfo--desc {
     font-size:15px;
     color:#999;
     margin-top:10px;
     font-family:'Lato',Helvetica,Arial;
 }
-.pizzaInfo--sector {
+.acaiInfo--sector {
     color:#CCC;
     text-transform: uppercase;
     font-size:14px;
     margin-top:30px;
     margin-bottom:10px;
 }
-.pizzaInfo--sizes {
+.acaiInfo--sizes {
     display:inline-flex;
     border-radius:10px;
     overflow:hidden;
 }
-.pizzaInfo--size {
+.acaiInfo--size {
     padding:10px 15px;
     color:#000;
     background-color:#EEE;
@@ -193,36 +193,36 @@ h1 {
     font-weight: bold;
     cursor:pointer;
 }
-.pizzaInfo--size:hover {
+.acaiInfo--size:hover {
     background-color:#CCC;
 }
-.pizzaInfo--size.selected {
+.acaiInfo--size.selected {
     background-color:#399ade;
     color:#FFF;
 }
-.pizzaInfo--size.selected span {
+.acaiInfo--size.selected span {
     color:#D6D6D6;
 }
-.pizzaInfo--size span {
+.acaiInfo--size span {
     font-size:12px;
     color:#999;
     font-weight: normal;
 }
-.pizzaInfo--price {
+.acaiInfo--price {
     display:flex;
     align-items:center;
 }
-.pizzaInfo--actualPrice {
+.acaiInfo--actualPrice {
     font-size:28px;
     margin-right:30px;
 }
-.pizzaInfo--qtarea {
+.acaiInfo--qtarea {
     display:inline-flex;
     background-color:#EEE;
     border-radius:10px;
     height:30px;
 }
-.pizzaInfo--qtarea button {
+.acaiInfo--qtarea button {
     border:0;
     background-color:transparent;
     font-size:17px;
@@ -231,14 +231,14 @@ h1 {
     padding:0px 10px;
     color:#333;
 }
-.pizzaInfo--qt {
+.acaiInfo--qt {
     line-height: 30px;
     font-size: 12px;
     font-weight: bold;
     padding: 0px 5px;
     color:#000;
 }
-.pizzaInfo--addButton {
+.acaiInfo--addButton {
     margin-top:30px;
     padding:20px 30px;
     border-radius:20px;
@@ -248,14 +248,14 @@ h1 {
     cursor:pointer;
     margin-right:30px;
 }
-.pizzaInfo--addButton:hover {
+.acaiInfo--addButton:hover {
     background-color:#32a345;
 }
-.pizzaInfo--cancelButton {
+.acaiInfo--cancelButton {
     display:inline-block;
     cursor:pointer;
 }
-.pizzaInfo--cancelMobileButton {
+.acaiInfo--cancelMobileButton {
     display:none;
     height:40px;
     text-align:center;
@@ -332,7 +332,7 @@ h1 {
 }
 
 @media (max-width:1000px) {
-    .pizza-area {
+    .acai-area {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -341,10 +341,10 @@ h1 {
     body {
         flex-direction: column;
     }
-    .pizza-area {
+    .acai-area {
         display:block;
     }
-    .pizza-item {
+    .acai-item {
         max-width:100%;
     }
     header {
@@ -374,12 +374,12 @@ h1 {
         display:block;
     }
 
-    .pizzaWindowArea {
+    .acaiWindowArea {
         justify-content:flex-start;
         align-items: flex-start;
     }
 
-    .pizzaWindowBody {
+    .acaiWindowBody {
         width:100vw;
         display:block;
         padding:20px;
@@ -388,37 +388,37 @@ h1 {
         margin:0;
     }
 
-    .pizzaBig img {
+    .acaiBig img {
         width: 75%;
         height: auto;
     }
 
-    .pizzaInfo h1 {
+    .acaiInfo h1 {
         margin-top:20px;
     }
 
-    .pizzaInfo--qtarea {
+    .acaiInfo--qtarea {
         height:60px;
     }
-    .pizzaInfo--qtarea button {
+    .acaiInfo--qtarea button {
         font-size:25px;
         padding:0px 25px;
     }
-    .pizzaInfo--qt {
+    .acaiInfo--qt {
         line-height: 60px;
         font-size:20px;
     }
-    .pizzaInfo--addButton {
+    .acaiInfo--addButton {
         font-size:20px;
         display:block;
         text-align:center;
         margin:30px auto;
     }
 
-    .pizzaInfo--cancelButton {
+    .acaiInfo--cancelButton {
         display:none;
     }
-    .pizzaInfo--cancelMobileButton {
+    .acaiInfo--cancelMobileButton {
         display:block;
     }
 }
