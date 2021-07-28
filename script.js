@@ -6,97 +6,97 @@ let modalKey = 0;
 const c = (el)=>document.querySelector(el);
 const cs = (el)=>document.querySelectorAll(el);
 
-//mapeando o arquivo pizzas.js e selecionando item a item pelo index
-pizzaJson.map((item, index)=>{
-    let pizzaItem = c('.models .pizza-item').cloneNode(true); //clonando as estruturas
+//mapeando o arquivo acais.js e selecionando item a item pelo index
+acaiJson.map((item, index)=>{
+    let acaiItem = c('.models .acai-item').cloneNode(true); //clonando as estruturas
 
-    pizzaItem.setAttribute('data-key', index);
+    acaiItem.setAttribute('data-key', index);
 
-    //exibindo as informações da API (imagem, preço, nome e descrição das pizzas) para o usuário
-    pizzaItem.querySelector('.pizza-item--img img').src = item.img;
-    pizzaItem.querySelector('.pizza-item--price').innerHTML = `R$ ${item.price.toFixed('2')}`;
-    pizzaItem.querySelector('.pizza-item--name').innerHTML = item.name;
-    pizzaItem.querySelector('.pizza-item--desc').innerHTML = item.description;
+    //exibindo as informações da API (imagem, preço, nome e descrição das acais) para o usuário
+    acaiItem.querySelector('.acai-item--img img').src = item.img;
+    acaiItem.querySelector('.acai-item--price').innerHTML = `R$ ${item.price.toFixed('2')}`;
+    acaiItem.querySelector('.acai-item--name').innerHTML = item.name;
+    acaiItem.querySelector('.acai-item--desc').innerHTML = item.description;
     
     //removendo o refresh na página ao abrir o modal
-    pizzaItem.querySelector('a').addEventListener('click', (e)=>{
+    acaiItem.querySelector('a').addEventListener('click', (e)=>{
         e.preventDefault();
-        let key = e.target.closest('.pizza-item').getAttribute('data-key');
+        let key = e.target.closest('.acai-item').getAttribute('data-key');
         modalQt = 1;
         modalKey = key;
 
-        ////exibindo as informações da API (imagem, preço, nome e descrição das pizzas) no modal
-        c('.pizzaBig img').src = item.img;
-        c('.pizzaBig img').style.width = '300px';
-        c('.pizzaBig img').style.height = '200px';
-        c('.pizzaInfo h1').innerHTML = item.name;
-        c('.pizzaInfo--desc').innerHTML = item.description;
-        c('.pizzaInfo--actualPrice').innerHTML = `R$ ${pizzaJson[key].price.toFixed('2')}`;
-        c('.pizzaInfo--size.selected').classList.remove('selected');
-        cs('.pizzaInfo--size').forEach((size, sizeIndex)=>{
+        ////exibindo as informações da API (imagem, preço, nome e descrição das acais) no modal
+        c('.acaiBig img').src = item.img;
+        c('.acaiBig img').style.width = '300px';
+        c('.acaiBig img').style.height = '200px';
+        c('.acaiInfo h1').innerHTML = item.name;
+        c('.acaiInfo--desc').innerHTML = item.description;
+        c('.acaiInfo--actualPrice').innerHTML = `R$ ${acaiJson[key].price.toFixed('2')}`;
+        c('.acaiInfo--size.selected').classList.remove('selected');
+        cs('.acaiInfo--size').forEach((size, sizeIndex)=>{
 
             if(sizeIndex == 2){
                 size.classList.add('selected'); //mantendo o tamanho Grande selecionado mesmo fechando o modal
             }
 
-            size.querySelector('span').innerHTML = pizzaJson[key].sizes[sizeIndex]; //adicionando os tamanhos das pizzas
+            size.querySelector('span').innerHTML = acaiJson[key].sizes[sizeIndex]; //adicionando os tamanhos das acais
         });
 
-        c('.pizzaInfo--qt').innerHTML = modalQt;
+        c('.acaiInfo--qt').innerHTML = modalQt;
 
-        c('.pizzaWindowArea').style.opacity = 0;
-        c('.pizzaWindowArea').style.display = 'flex';
+        c('.acaiWindowArea').style.opacity = 0;
+        c('.acaiWindowArea').style.display = 'flex';
         setTimeout(()=>{
-            c('.pizzaWindowArea').style.opacity = 1;
+            c('.acaiWindowArea').style.opacity = 1;
         }, 200); //setando delay no modal
         
     });
 
-    c('.pizza-area').append(pizzaItem);
+    c('.acai-area').append(acaiItem);
 });
 
 //Eventos do modal
 function closeModal(){
-    c('.pizzaWindowArea').style.opacity = 0;
+    c('.acaiWindowArea').style.opacity = 0;
     setTimeout(()=>{
-        c('.pizzaWindowArea').style.display = 'none';
+        c('.acaiWindowArea').style.display = 'none';
     }, 500);
 }
-cs('.pizzaInfo--cancelMobileButton, .pizzaInfo--cancelButton').forEach((item)=>{
+cs('.acaiInfo--cancelMobileButton, .acaiInfo--cancelButton').forEach((item)=>{
     item.addEventListener ('click', closeModal);
 })
 
-//Eventos dos botões de adicionar e remover quantidade de pizzas
-c('.pizzaInfo--qtmenos').addEventListener('click', ()=>{
+//Eventos dos botões de adicionar e remover quantidade de acais
+c('.acaiInfo--qtmenos').addEventListener('click', ()=>{
     if(modalQt > 1){
         modalQt--;
-        c('.pizzaInfo--qt').innerHTML = modalQt;
+        c('.acaiInfo--qt').innerHTML = modalQt;
     }
     
 });
-c('.pizzaInfo--qtmais').addEventListener('click', ()=>{
+c('.acaiInfo--qtmais').addEventListener('click', ()=>{
     modalQt++;
-    c('.pizzaInfo--qt').innerHTML = modalQt;
+    c('.acaiInfo--qt').innerHTML = modalQt;
 });
 
 //Evento de seleção dos tamanhos
-cs('.pizzaInfo--size').forEach((size, sizeIndex)=>{
+cs('.acaiInfo--size').forEach((size, sizeIndex)=>{
     size.addEventListener('click', (e)=>{
-        c('.pizzaInfo--size.selected').classList.remove('selected');
+        c('.acaiInfo--size.selected').classList.remove('selected');
         size.classList.add('selected');
     });
 });
 
 //Evento de adição dos produtos ao carrinho
-c('.pizzaInfo--addButton').addEventListener('click', ()=>{
-    let size = parseInt(c('.pizzaInfo--size.selected').getAttribute('data-key'));//Pegando o tamanho do item
-    let identifier = pizzaJson[modalKey].id+'@'+size;
+c('.acaiInfo--addButton').addEventListener('click', ()=>{
+    let size = parseInt(c('.acaiInfo--size.selected').getAttribute('data-key'));//Pegando o tamanho do item
+    let identifier = acaiJson[modalKey].id+'@'+size;
     let key = cart.findIndex((item)=>item.identifier == identifier);
     if (key > -1){
         cart[key].qt += modalQt;
     }else{
         cart.push({
-            id:pizzaJson[modalKey].id,
+            id:acaiJson[modalKey].id,
             size,
             qt:modalQt
          });//adicionando ao carrinho
@@ -128,28 +128,28 @@ function updateCart(){
         let total = 0;
 
         for (let i in cart){
-            let pizzaItem = pizzaJson.find((item)=>item.id == cart[i].id);
-            subtotal += pizzaItem.price * cart[i].qt;
+            let acaiItem = acaiJson.find((item)=>item.id == cart[i].id);
+            subtotal += acaiItem.price * cart[i].qt;
 
             let cartItem = c('.models .cart--item').cloneNode(true);
 
-            let pizzaSizeName;
+            let acaiSizeName;
             switch(cart[i].size){
                 case 0:
-                    pizzaSizeName = 'P';
+                    acaiSizeName = 'P';
                     break;
                 case 1:
-                    pizzaSizeName = 'M';
+                    acaiSizeName = 'M';
                     break;
                 case 2:
-                    pizzaSizeName = 'G';
+                    acaiSizeName = 'G';
                     break;
             }
             
-            let pizzaName = `${pizzaItem.name} (${pizzaSizeName})`;
+            let acaiName = `${acaiItem.name} (${acaiSizeName})`;
             
-            cartItem.querySelector('img').src = pizzaItem.img;
-            cartItem.querySelector('.cart--item-nome').innerHTML = pizzaName;
+            cartItem.querySelector('img').src = acaiItem.img;
+            cartItem.querySelector('.cart--item-nome').innerHTML = acaiName;
             cartItem.querySelector('.cart--item--qt').innerHTML = cart[i].qt;
             cartItem.querySelector('.cart--item-qtmenos').addEventListener('click',()=>{
                 if(cart[i].qt > 1){
